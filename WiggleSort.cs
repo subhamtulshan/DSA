@@ -4,6 +4,8 @@ Given an unsorted array of integers, sort the array into a wave like array. An a
 
 public static void WiggleSort(int [] arr)
 {
+//Here the main thought is when we swap also the previous eqivalency is not hampered. because see for odd condition a b c , here at index 1 ie odd ,
+//we are only swapping b &C when c is smaller then b. so the equivalency is maintained
 	for(int i=0;i<arr.Length-1;i++)
 	{
 		if(i%2==0)
