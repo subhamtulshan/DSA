@@ -1,14 +1,11 @@
-/**
- * Definition of TreeNode:
- * public class TreeNode {
- *     public int val;
- *     public TreeNode left, right;
- *     public TreeNode(int val) {
- *         this.val = val;
- *         this.left = this.right = null;
- *     }
- * }
- */
+
+/*
+Description
+Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+
+Solution -- Here the idea is that we calculat an abs diff and if the target is greater then currect root then we can 
+find a value closer to it only on right else on left.
+*/
 
 public class Solution {
     /**
