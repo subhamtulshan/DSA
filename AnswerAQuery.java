@@ -30,6 +30,11 @@ import java.util.TreeSet;
  * The fifth query is GET 2, and the value at index 2 is true.
  */
 
+
+Solution 1 : Not effficient 
+Whenever we set the data we will make all the previous index of this to same value till the  index we dont find already true value
+o(n)
+
 SOlution -- Here the idea is to use a Treeset that will store the data in sorted manner and all operation will be done in logn . so whenever we set some index to 
 true we insert it in the treeset and for get we try to find the ceiling of that index.
   
