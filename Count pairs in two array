@@ -1,0 +1,28 @@
+/*
+Given two arrays of integers a and b of the same length, find the number of pairs (i, j) such that i <=j
+and a[i] - b[j] = a[j] - b[i].
+ For a= [2, -2, 5, 3] and b= [1, 5, -1, 1], the output should be solution (a, b) = 6.
+
+*/
+
+Soltuion -- Here the idea is that we will transform the equation as ai + bi =aj+bj
+Now we just need to find number of times same number has occurec in the array
+
+Ex = adding the array a and b ==> [3,3,4,4] so now we just need to find the number of times 3/ has occured after the first 3/4 
+
+
+public static int GetTotalPairs(int[] a, int[] b)
+    {
+        int n = a.Length;
+        Dictionary<int, int> seenSums = new Dictionary<int, int>();
+        int count = n; // because i==j so for each index it will be valid
+        for(int i=0; i<n; i++)
+        {
+            int x = a[i] + b[i];
+            if(!seenSums.ContainsKey(x))
+                seenSums.Add(x, 0);
+            count += seenSums[x];
+            seenSums[x]++;
+        }
+        return count;
+    }
