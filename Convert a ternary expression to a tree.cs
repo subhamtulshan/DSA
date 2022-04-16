@@ -27,6 +27,7 @@ a?b:c?d:e
 2. if ':', pop the top node in the stack, then peek at the top. Initialize right node and push right node to stack
 3. if character, peek at top node and set value to that node
 
+
 Node ternaryToTree(String exp) {
         Stack stack = new Stack();
         Node node = new Node();
@@ -38,6 +39,11 @@ Node ternaryToTree(String exp) {
                         stack.push(stack.peek().left);
                 } else if(c == ':') {
                         stack.pop();
+                         //String input = "a?b?c?d:e:f?g:h:i?j:k" use this to clearify ,dont create the entire string , but create till f atleast 
+                         while (stack.peek().right != null) 
+                         {
+                          stack.pop();
+                         }
                         stack.peek().right = new Node();
                         stack.push(stack.peek().right);
                 } else {
