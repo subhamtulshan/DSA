@@ -21,7 +21,7 @@ public static int GetTotalPairs(int[] a, int[] b)
             int x = a[i] + b[i];
             if(!seenSums.ContainsKey(x))
                 seenSums.Add(x, 0);
-            count += seenSums[x];
+            count += seenSums[x]; // this is correct because we need to check all pairs after i and we need to do for each i (0 to n) kindof N^2
             seenSums[x]++;
         }
         return count;
