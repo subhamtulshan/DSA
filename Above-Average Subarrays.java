@@ -5,9 +5,11 @@ import java.util.List;
  * Created on:  Sep 30, 2020
  * Questions: https://www.facebookrecruiting.com/portal/coding_practice_interview/?interview_id=803484747071632
  * Above-Average Subarrays
- * You are given an array A containing N integers. Your task is to find all subarrays whose average sum is greater than the average sum of the remaining array elements. You must return the start and end index of each subarray in sorted order.
+ * You are given an array A containing N integers. Your task is to find all subarrays whose average sum is greater than the average sum of the remaining array elements.
+ You must return the start and end index of each subarray in sorted order.
  * A subarray that starts at position L1 and ends at position R1 comes before a subarray that starts at L2 and ends at R2 if L1 < L2, or if L1 = L2 and R1 ≤ R2.
- * Note that we'll define the average sum of an empty array to be 0, and we'll define the indicies of the array (for the purpose of output) to be 1 through N. A subarray that contains a single element will have L1 = R1.
+ * Note that we'll define the average sum of an empty array to be 0, and we'll define the indicies of the array (for the purpose of output) to be 1 through N.
+ A subarray that contains a single element will have L1 = R1.
  * Signature
  * Subarray[] aboveAverageSubarrays(int[] A)
  * Input
@@ -46,8 +48,8 @@ public class AboveAverageSubarrays {
         for (int i = 0; i < n; i++) {
             double curSum = 0, remSum = sum;
             for (int j = i; j < n; j++) {
-                curSum += nums[i];
-                remSum -= nums[i];
+                curSum += nums[j];
+                remSum -= nums[j];
                 int width = j - i + 1;
                 if (curSum / width > remSum / n - width) {
                     result.add(new int[]{i, j});
