@@ -5,6 +5,8 @@
 public class Solution 
 {
     /**
+   TIime Complexity-- Building the graph takes O(n). Topological sort takes O(V + E).
+   space -- O(number of words) -- assuming each word can contribute max 1 char
      * @param words: a list of words
      * @return: a String which is correct order
      */
