@@ -69,7 +69,9 @@ public class Solution
 
 
 
-//Approach 2 -- only if interviewer dont agree with the previous one
+//Approach 2 -- only if interviewer dont agree with the previous one.. This will create any kinda tree. 
+what we are doing is whenevere we get a number we create a node and then check the next char after that if its ( then we create a left and 
+then we again check for ( 
 
 
 /**
