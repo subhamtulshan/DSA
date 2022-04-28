@@ -33,20 +33,26 @@ If we sell, we have utilized our allowed transactions and reach the final state 
 
 Thoughs2
 
-First assume that we have no money, so buy1 means that we have to borrow money from others, we want to borrow less so that we have to make our balance as max as we can(because this is negative).
+First assume that we have no money, so buy1 means that we have to borrow money from others, 
+we want to borrow less so that we have to make our balance as max as we can(because this is negative).
 
-sell1 means we decide to sell the stock, after selling it we have price[i] money and we have to give back the money we owed, so we have price[i] - |buy1| = prices[i ] + buy1, we want to make this max.
+sell1 means we decide to sell the stock, after selling it we have price[i] money and we have to give back the money we owed,
+so we have price[i] - |buy1| = prices[i ] + buy1, we want to make this max.
 
-buy2 means we want to buy another stock, we already have sell1 money, so after buying stock2 we have buy2 = sell1 - price[i] money left, we want more money left, so we make it max
+buy2 means we want to buy another stock, we already have sell1 money, so after buying stock2 we have buy2 = sell1 - price[i] money left, 
+we want more money left, so we make it max
 
-sell2 means we want to sell stock2, we can have price[i] money after selling it, and we have buy2 money left before, so sell2 = buy2 + prices[i], we make this max.
+sell2 means we want to sell stock2, we can have price[i] money after selling it, and we have buy2 money left before,
+so sell2 = buy2 + prices[i], we make this max.
 
 So sell2 is the most money we can have.
 
 Hope it is helpful and welcome quesions!
 
 Thought3 --Here, the oneBuy keeps track of the lowest price, and oneBuyOneSell keeps track of the biggest profit we could get.
-Then the tricky part comes, how to handle the twoBuy? Suppose in real life, you have bought and sold a stock and made $100 dollar profit. When you want to purchase a stock which costs you $300 dollars, how would you think this? You must think, um, I have made $100 profit, so I think this $300 dollar stock is worth $200 FOR ME since I have hold $100 for free.
+Then the tricky part comes, how to handle the twoBuy? Suppose in real life, you have bought and sold a stock and made $100 dollar profit. 
+When you want to purchase a stock which costs you $300 dollars, how would you think this? You must think, um, I have made $100 profit, 
+so I think this $300 dollar stock is worth $200 FOR ME since I have hold $100 for free.
 There we go, you got the idea how we calculate twoBuy!! We just minimize the cost again!! The twoBuyTwoSell is just making as much profit as possible.
 Hope this explanation helps other people to understand this!
 
