@@ -6,7 +6,8 @@ Follow-up:
 What if one of the vectors is very small?
 */
 
-//Approach 1 : Here we put both the vector into a hashMap and then for the smaller one we search the index in the other if we found then we product them. But the cache here is sometime the hashfunction might not be best because of lot of element or the hashfunction
+//Approach 1 : Here we put both the vector into a hashMap and then for the smaller one we search the index in the other 
+//if we found then we product them. But the cache here is sometime the hashfunction might not be best because of lot of element or the hashfunction
 
 class SparseVector 
 {
@@ -32,7 +33,9 @@ class SparseVector
     }
 };
 
-//Approach 1 : Here we are kindof using a Tuple or a array of pair<index,value> . We create it for both the vector and then use two pointer approach where both are pointing to each array and if the index match in both then we add the product , else we increment where the index is lower as they can match in future.
+//Approach 1 : Here we are kindof using a Tuple or a array of pair<index,value> .
+//We create it for both the vector and then use two pointer approach where both are pointing to each array and if the index
+//match in both then we add the product , else we increment where the index is lower as they can match in future.
 
 
 class SparseVector {
