@@ -52,7 +52,7 @@ public class MinimumLengthSubstrings {
                 result = Math.min(result, p2 - p1 + 1);
                 cur = s.charAt(p1);
                 window.put(cur, window.get(cur) - 1);
-                if (window.get(cur) < target.get(cur)) found--;
+                if (target.containKey(cur) && window.get(cur) < target.get(cur)) found--;
                 p1++;
             }
             p2++;
