@@ -40,10 +40,14 @@ Node ternaryToTree(String exp) {
                 } else if(c == ':') {
                         stack.pop();
                          //String input = "a?b?c?d:e:f?g:h:i?j:k" use this to clearify ,dont create the entire string , but create till f atleast 
-                         while (stack.peek().right != null) 
-                         {
-                          stack.pop();
-                         }
+                          while (stack.Count > 0 && stack.Peek().Right != null)
+                          {
+                              stack.Pop();  // Ensure we pop nodes that already have both children
+                          }
+                          if (stack.Count > 0)
+                          {
+                              stack.Peek().Right = node;  // Attach as the right child
+                          }
                         stack.peek().right = new Node();
                         stack.push(stack.peek().right);
                 } else {
