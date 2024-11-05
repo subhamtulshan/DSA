@@ -46,10 +46,10 @@ Node ternaryToTree(String exp) {
                           }
                           if (stack.Count > 0)
                           {
-                              stack.Peek().Right = node;  // Attach as the right child
+                              stack.peek().right = new Node();
+                              stack.push(stack.peek().right);
                           }
-                        stack.peek().right = new Node();
-                        stack.push(stack.peek().right);
+
                 } else {
                         stack.peek().val = c;
                 }
