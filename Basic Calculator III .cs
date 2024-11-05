@@ -82,7 +82,7 @@ public class Main {
         st = p.st;
         cal(st, sign, val);
       }
-      if (s.charAt(i) == ' ')
+      if (s.charAt(i) != ' ')
       {
         sign = c;
       }
