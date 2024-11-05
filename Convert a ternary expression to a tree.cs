@@ -28,31 +28,92 @@ a?b:c?d:e
 3. if character, peek at top node and set value to that node
 
 
-Node ternaryToTree(String exp) {
-        Stack stack = new Stack();
-        Node node = new Node();
-        stack.push(node);
-        for(int i = 0; i < exp.length(); i++) {
-                char c = exp.charAt(i);
-                if(c == '?') {
-                        stack.peek().left = new Node();
-                        stack.push(stack.peek().left);
-                } else if(c == ':') {
-                        stack.pop();
-                         //String input = "a?b?c?d:e:f?g:h:i?j:k" use this to clearify ,dont create the entire string , but create till f atleast 
-                          while (stack.Count > 0 && stack.Peek().Right != null)
-                          {
-                              stack.Pop();  // Ensure we pop nodes that already have both children
-                          }
-                          if (stack.Count > 0)
-                          {
-                              stack.peek().right = new Node();
-                              stack.push(stack.peek().right);
-                          }
+using System;
+using System.Collections.Generic;
 
-                } else {
-                        stack.peek().val = c;
+// Definition of a TreeNode
+public class TreeNode
+{
+    public char Value;
+    public TreeNode Left;
+    public TreeNode Right;
+
+    public TreeNode(char value)
+    {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
+
+public class TernaryExpressionTree
+{
+    public TreeNode ConvertToTree(string expression)
+    {
+        if (string.IsNullOrEmpty(expression))
+            return null;
+
+        // Stack to hold the nodes
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        
+        // Create the root node
+        TreeNode root = new TreeNode(expression[0]);
+        stack.Push(root);
+
+        // Iterate over the expression
+        for (int i = 1; i < expression.Length; i++)
+        {
+            if (expression[i] == '?')
+            {
+                // Next character is part of the true expression
+                i++;
+                TreeNode node = new TreeNode(expression[i]);
+                stack.Peek().Left = node;  // Attach as the left child
+                stack.Push(node);  // Push onto the stack
+            }
+            else if (expression[i] == ':')
+            {
+                // Next character is part of the false expression
+                i++;
+                TreeNode node = new TreeNode(expression[i]);
+                stack.Pop();  // Pop the last node since we're done with the true expression
+                while (stack.Count > 0 && stack.Peek().Right != null)
+                {
+                    stack.Pop();  // Ensure we pop nodes that already have both children
                 }
+                if (stack.Count > 0)
+                {
+                    stack.Peek().Right = node;  // Attach as the right child
+                }
+                stack.Push(node);  // Push onto the stack
+            }
         }
-        return node;
+
+        return root;
+    }
+
+    // Helper function to print the tree (for debugging)
+    public void PrintTree(TreeNode root, string indent = "", bool isLeft = true)
+    {
+        if (root != null)
+        {
+            Console.WriteLine(indent + (isLeft ? "└── " : "┌── ") + root.Value);
+            PrintTree(root.Left, indent + (isLeft ? "    " : "│   "), true);
+            PrintTree(root.Right, indent + (isLeft ? "    " : "│   "), false);
+        }
+    }
+}
+
+// Example usage
+public class Program
+{
+    public static void Main()
+    {
+        string expression = "a?b?c?d:e:f?g:h:i?j:k";
+        TernaryExpressionTree treeBuilder = new TernaryExpressionTree();
+        TreeNode root = treeBuilder.ConvertToTree(expression);
+
+        // Print the tree to verify the structure
+        treeBuilder.PrintTree(root);
+    }
 }
