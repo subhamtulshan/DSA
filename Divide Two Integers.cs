@@ -19,10 +19,10 @@ class Solution {
         for (int x = 31; x >= 0; x--)
         {
             System.out.println((a >>> x) +" "+ a +" "+x+" "+b);
-            if ((a >>> x) - b >= 0) 
+            if ((a >>> x) - b >= 0)  // a>>>x mean diving a by 2^x( a/2^x-b>0)
             {
-                res += 1 << x;
-                a -= b << x;
+                res += 1 << x;   
+                a -= b << x;  //b << x mean multiplying b by 2^x
             }
         }
         return (A > 0) == (B > 0) ? res : -res;
