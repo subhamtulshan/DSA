@@ -33,20 +33,30 @@ public class CircularLinkedList {
             return;
         }
 
-        // Case 2: Insert before head (smallest element or larger than the largest)
         Node current = head;
+
+        // Case 2: Inserting new node as the smallest element (before head)
+        if (data < head.data) {
+            // Find the last node in the circular list
+            while (current.next != head) {
+                current = current.next;
+            }
+
+            // Insert newNode before the head and update head
+            current.next = newNode;
+            newNode.next = head;
+            head = newNode; // Update head to the new smallest node
+            return;
+        }
+
+        // Case 3: Insert in the middle or end of the list
         while (current.next != head && current.next.data < data) {
             current = current.next;
         }
 
-        // Insert the new node
+        // Insert newNode between current and current.next
         newNode.next = current.next;
         current.next = newNode;
-
-        // Adjust head if necessary (if inserted before the smallest element)
-        if (data < head.data) {
-            head = newNode;
-        }
     }
 
     public void PrintList() {
